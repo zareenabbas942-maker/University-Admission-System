@@ -1,0 +1,6 @@
+{
+  "name": "University Admission Management System",
+  "description": "A comprehensive MERN-stack admission portal featuring student application tracking, fee challans, admin merit list generator, and department management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
