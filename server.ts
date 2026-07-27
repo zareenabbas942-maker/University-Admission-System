@@ -1,12 +1,27 @@
+import cors from 'cors';
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { router } from './server/routes';
 import { seedInitialData } from './server/seed';
+import { connectDB } from './server/db'; // 1. MongoDB connection import kiya
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
+
+  // 2. CORS Middleware enable kiya (Deployment ke liye zaroori)
+  app.use(cors({
+    origin: '*',
+    credentials: true
+  }));
+
+  // 3. MongoDB Atlas Database connect karein
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error('Failed to connect to MongoDB Atlas:', err);
+  }
 
   // Initialize database seed
   try {
