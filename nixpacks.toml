@@ -1,0 +1,1 @@
+[phases.setup]`nnixPkgs = ["nodejs"]`n`n[phases.install]`ncmds = ["npm install"]`n`n[phases.start]`ncmd = ["npm start"]

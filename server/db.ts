@@ -134,3 +134,20 @@ export let db = loadData();
 export function generateId(): string {
   return 'id_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
 }
+// MongoDB Connection
+export async function connectDB() {
+  try {
+    const uri = process.env.MONGODB_URI;
+
+    if (!uri) {
+      throw new Error("MONGODB_URI is not defined in .env");
+    }
+
+    await mongoose.connect(uri);
+
+    console.log("✅ MongoDB Atlas Connected");
+  } catch (error) {
+    console.error("❌ MongoDB Connection Error:", error);
+    process.exit(1);
+  }
+}
